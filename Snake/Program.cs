@@ -56,11 +56,11 @@ namespace Snake
                     badfood = badfoodCreator.CreateFood();
                     badfood.Draw(ConsoleColor.Red);
                 }
-                if(Score.score <=-1)
+                if (Score.score <= -1)
                 {
                     Console.Clear();
                     Console.SetCursorPosition(50, 10);
-                    WriteGameOver();
+                    Console.Write("Game Over");
                 }
                 else
                 {
@@ -73,32 +73,8 @@ namespace Snake
                     snake.HandleKey(key.Key);
                 }
             }
-            WriteGameOver();
-            Console.ReadLine();
+            Console.SetCursorPosition(50, 10);
+            Console.Write("Game Over");
         }
-        static void WriteGameOver()
-        {
-            int xOffset = 25;
-            int yOffset = 8;
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.SetCursorPosition(xOffset, yOffset++);
-            WriteText("============================", xOffset, yOffset++);
-            WriteText("         GAME OVER", xOffset + 1, yOffset++);
-            WriteText("Your points " + Score.score, xOffset - 1, yOffset++);
-            WriteText("============================", xOffset, yOffset++);
-            Console.SetCursorPosition(27, 15);
-            Console.WriteLine("Please write your name: ");
-            Console.SetCursorPosition(27, 16);
-            string name = Console.ReadLine();
-            Console.SetCursorPosition(27, 15);
-            Console.WriteLine(name + " , your score is " + Score.score);
-        }
-
-        static void WriteText(String text, int xOffset, int yOffset)
-        {
-            Console.SetCursorPosition(xOffset, yOffset);
-            Console.WriteLine(text);
-        }
-
     }
 }
